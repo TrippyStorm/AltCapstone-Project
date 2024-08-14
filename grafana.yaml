@@ -1,0 +1,13 @@
+apiVersion: integreatly.com/v1alpha1
+kind: Grafana
+metadata:
+  name: grafana
+spec:
+  replicas: 1
+  serviceMonitorSelector:
+    matchLabels:
+      k8s-app: grafana
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
