@@ -1,0 +1,13 @@
+apiVersion: ec2.aws.upbound.io/v1beta1
+kind: SecurityGroup
+metadata:
+  name: socks-shop-sg
+spec:
+  forProvider:
+    region: us-east-2
+  ingress:
+  - fromPort: 80
+    toPort: 80
+    protocol: tcp
+    cidrBlocks:
+    - 0.0.0.0/0
