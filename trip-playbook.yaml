@@ -1,0 +1,45 @@
+---
+- name: Deploy Socks Shop application
+  hosts: localhost
+  become: yes
+
+  tasks:
+  - name: Install Docker
+    apt:
+      name: docker.io
+      state: present
+
+  - name: Install Kubernetes
+    apt:
+      name: kubectl
+      state: present
+
+  - name: Create Kubernetes namespace
+    kubectl:
+      namespace: socks-shop
+      state: present
+
+  - name: Deploy Socks Shop application
+    kubectl:
+      manifest: "{{ role_path }}/files/socks-shop.yaml"
+      state: present
+
+  - name: Expose Socks Shop application
+    kubectl:
+      manifest: "{{ role_path }}/files/socks-shop-svc.yaml"
+      state: present
+
+  - name: Create Prometheus deployment
+    kubectl:
+      manifest: "{{ role_path }}/files/prometheus.yaml"
+      state: present
+
+  - name: Create Alertmanager deployment
+    kubectl:
+      manifest: "{{ role_path }}/files/alertmanager.yaml"
+      state: present
+
+  - name: Create Grafana deployment
+    kubectl:
+      manifest: "{{ role_path }}/files/grafana.yaml"
+      state: present
