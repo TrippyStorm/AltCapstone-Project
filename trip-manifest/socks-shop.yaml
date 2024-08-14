@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: socks-shop
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: socks-shop
+  template:
+    metadata:
+      labels:
+        app: socks-shop
+    spec:
+      containers:
+      - name: frontend
+        image: microservices-demo/frontend:latest
+        ports:
+        - containerPort: 80
+      - name: catalogue
+        image: microservices-demo/catalogue:latest
+        ports:
+        - containerPort: 80
+      - name: orders
+        image: microservices-demo/orders:latest
+        ports:
+        - containerPort: 80
+      - name: payment
+        image: microservices-demo/payment:latest
+        ports:
+        - containerPort: 80
+      - name: shipping
+        image: microservices-demo/shipping:latest
+        ports:
+        - containerPort: 80
+      - name: user
+        image: microservices-demo/user:latest
+        ports:
+        - containerPort: 80
