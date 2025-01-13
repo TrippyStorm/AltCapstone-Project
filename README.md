@@ -14,4 +14,3 @@ Setting up a Socks Shop application, a demonstration of a microservices architec
 
 
 
-*PS: I could not afford to pay for Aws services as i have been billed multiple times, which stopped me from finishing this project. Nevertheless i will definitely find a way to complete it if i get a voucher or free Aws credits. Thank you sir.*
